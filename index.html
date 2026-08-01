@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダーアプリ</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>カレンダーアプリ</h1>
+    </header>
+
+    <main>
+
+        <section class="calendar-area">
+            <h2>カレンダー</h2>
+
+            <div class="calendar-box">
+                ここにカレンダーを表示
+            </div>
+        </section>
+
+        <section class="schedule-area">
+            <h2>予定</h2>
+
+            <input type="text" id="scheduleInput" placeholder="予定を入力">
+
+            <button id="addButton">
+                追加
+            </button>
+
+            <ul id="scheduleList"></ul>
+        </section>
+
+        <section class="checklist-area">
+            <h2>チェックリスト</h2>
+
+            <ul>
+                <li>課題提出</li>
+                <li>ミーティング</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
