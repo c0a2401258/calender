@@ -13,7 +13,7 @@ async function loadPage(page, css, js) {  //ファイル名を変数
     const html = await res.text();  //文字列変換
 
     // 表示
-    app.innerHTML = html;  //<div>のappにhtmlを入れる
+    app.innerHTML = html;  //<div>のappにhtml情報を入れる
 
     // CSS変更
     pageStyle.href = css;
