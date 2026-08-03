@@ -33,7 +33,7 @@
 
 A：feature/calendar  
 B：feature/sidebar  
-C：geature/backend  
+C：feature/backend  
 
 ---
 
