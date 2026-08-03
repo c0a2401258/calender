@@ -1,53 +1,84 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カレンダーアプリ</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Calendar App</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>カレンダーアプリ</h1>
-    </header>
+    <!-- ===================================== -->
+    <!-- ログイン画面 -->
+    <!-- 担当：A -->
+    <!-- ===================================== -->
+    <div id="login-page">
 
-    <main>
+    </div>
 
-        <section class="calendar-area">
-            <h2>カレンダー</h2>
+    <!-- ===================================== -->
+    <!-- メイン画面 -->
+    <!-- 担当：A -->
+    <!-- ===================================== -->
+    <div id="calendar-page">
 
-            <div class="calendar-box">
-                ここにカレンダーを表示
-            </div>
-        </section>
+    </div>
 
-        <section class="schedule-area">
-            <h2>予定</h2>
+    <!-- ===================================== -->
+    <!-- サイドバー -->
+    <!-- 担当：B -->
+    <!-- ===================================== -->
+    <div id="sidebar">
 
-            <input type="text" id="scheduleInput" placeholder="予定を入力">
+    </div>
 
-            <button id="addButton">
-                追加
-            </button>
+    <!-- ===================================== -->
+    <!-- 日ごとの予定 -->
+    <!-- 担当：B -->
+    <!-- ===================================== -->
+    <div id="schedule-page">
 
-            <ul id="scheduleList"></ul>
-        </section>
+    </div>
 
-        <section class="checklist-area">
-            <h2>チェックリスト</h2>
+    <!-- ===================================== -->
+    <!-- 予定追加ポップアップ -->
+    <!-- 担当：B -->
+    <!-- ===================================== -->
+    <div id="popup">
 
-            <ul>
-                <li>課題提出</li>
-                <li>ミーティング</li>
-            </ul>
-        </section>
+    </div>
 
-    </main>
+    <!-- ===================================== -->
+    <!-- ユーザー設定 -->
+    <!-- 担当：B -->
+    <!-- ===================================== -->
+    <div id="setting-page">
 
-    <script src="js/script.js"></script>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/lecture.js"></script>
+    <script src="js/assignment.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/user.js"></script>
 
 </body>
+
 </html>
