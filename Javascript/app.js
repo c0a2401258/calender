@@ -1,18 +1,19 @@
-const app = document.getElementById("app");
+const app = document.getElementById("app");  //変更されない変数
 const pageStyle = document.getElementById("page-style");
 
 
 //-------------------------------------
 // 画面読み込み
 //-------------------------------------
-async function loadPage(page, css, js) {
+//awaitを使うためにasyncを使用する
+async function loadPage(page, css, js) {  //ファイル名を変数
 
     // HTMLを取得
-    const res = await fetch(page);
-    const html = await res.text();
+    const res = await fetch(page);  //指定のファイルを取ってくるまで待つ fetchファイルの取得、await待つ　Responsesオブジェクトを返す
+    const html = await res.text();  //文字列変換
 
     // 表示
-    app.innerHTML = html;
+    app.innerHTML = html;  //<div>のappにhtmlを入れる
 
     // CSS変更
     pageStyle.href = css;
@@ -25,7 +26,7 @@ async function loadPage(page, css, js) {
     }
 
     // 新しいJavaScript読み込み
-    const script = document.createElement("script");
+    const script = document.createElement("script");  //<script>作成
 
     script.src = js;
     script.id = "page-script";
