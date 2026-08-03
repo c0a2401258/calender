@@ -1,12 +1,32 @@
-// =================================
-// PHP通信
-// 担当：C
-// =================================
+//-------------------------------------
+// APIへPOST通信
+//-------------------------------------
+async function post(url, data) {
 
-// GET
+    const res = await fetch(url, {
 
-// POST
+        method: "POST",
 
-// UPDATE
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-// DELETE
+        body: JSON.stringify(data)
+
+    });
+
+    return await res.json();
+
+}
+
+
+//-------------------------------------
+// APIへGET通信
+//-------------------------------------
+async function get(url) {
+
+    const res = await fetch(url);
+
+    return await res.json();
+
+}
