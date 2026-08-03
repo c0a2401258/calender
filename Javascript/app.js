@@ -1,44 +1,87 @@
-// 表示先
 const app = document.getElementById("app");
+const pageStyle = document.getElementById("page-style");
 
-// 共通の画面読み込み関数
-async function loadPage(page) {
 
-    try {
+//-------------------------------------
+// 画面読み込み
+//-------------------------------------
+async function loadPage(page, css, js) {
 
-        // HTMLファイルを取得
-        const response = await fetch(page);
+    // HTMLを取得
+    const res = await fetch(page);
+    const html = await res.text();
 
-        // 文字列として取得
-        const html = await response.text();
+    // 表示
+    app.innerHTML = html;
 
-        // 画面へ表示
-        app.innerHTML = html;
+    // CSS変更
+    pageStyle.href = css;
 
-    } catch (error) {
+    // 古いJavaScript削除
+    const oldScript = document.getElementById("page-script");
 
-        app.innerHTML = "<h2>ページを読み込めませんでした</h2>";
-        console.error(error);
-
+    if (oldScript) {
+        oldScript.remove();
     }
+
+    // 新しいJavaScript読み込み
+    const script = document.createElement("script");
+
+    script.src = js;
+    script.id = "page-script";
+
+    document.body.appendChild(script);
+
 }
 
+
+//-------------------------------------
 // ログイン画面
+//-------------------------------------
 function showLogin() {
-    loadPage("pages/login.html");
+
+    loadPage(
+        "pages/login.html",
+        "css/login.css",
+        "js/login.js"
+    );
+
 }
 
+
+//-------------------------------------
 // メイン画面
+//-------------------------------------
 function showCalendar() {
-    loadPage("pages/calendar.html");
+
+    loadPage(
+        "pages/calendar.html",
+        "css/calendar.css",
+        "js/calendar.js"
+    );
+
 }
 
-// 日ごとの予定画面
+
+//-------------------------------------
+// 日ごとの予定
+//-------------------------------------
 function showSchedule() {
-    loadPage("pages/schedule.html");
+
+    loadPage(
+        "pages/schedule.html",
+        "css/schedule.css",
+        "js/schedule.js"
+    );
+
 }
 
-// アプリ起動時
+
+//-------------------------------------
+// 起動時
+//-------------------------------------
 window.onload = function () {
+
     showLogin();
-};
+
+}

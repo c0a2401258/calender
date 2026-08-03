@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Calendar App</title>
 
-    <!-- CSSは後で追加 -->
+    <!-- 全ページ共通CSS -->
     <link rel="stylesheet" href="css/common.css">
+
+    <!-- 画面ごとのCSSを読み込む -->
+    <link id="page-style" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ここに各画面が表示される -->
+    <!-- 画面表示場所 -->
     <div id="app"></div>
 
-    <!-- 画面切り替え用JS -->
+    <!-- 共通JS -->
+    <script src="js/api.js"></script>
     <script src="js/app.js"></script>
 
 </body>
