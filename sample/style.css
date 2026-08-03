@@ -1,0 +1,14 @@
+/* 見た目の整理 */
+body{
+    font-family:sans-serif;  /* フォント */
+    margin:30px;  /* 余白 */
+}
+
+button{
+    margin-left:10px;  /* 余白（左） */
+    padding:5px 15px;  /* 余白（中） */
+}
+
+li{
+    margin-top:10px;  /* 余白（上） */
+}

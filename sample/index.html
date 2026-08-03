@@ -1,0 +1,34 @@
+<!-- 画面の表示 -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>カレンダーサンプル</title>
+
+    <!-- CSSファイル読みこみ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2>予定追加</h2>
+
+    <!-- 入力場所 -->
+    <input id="title"> 
+
+    <!-- ボタンを押したら関数実行 -->
+    <button onclick="save()">
+        保存
+    </button>
+
+    <h2>予定一覧</h2>
+
+    <!-- 予定一覧表示 -->
+    <ul id="list"></ul>
+
+    <!-- scriptの読みこみ -->
+    <script src="script.js"></script>
+
+</body>
+</html>
