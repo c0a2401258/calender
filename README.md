@@ -60,6 +60,13 @@ calendar-app/
 ├── index.html
 ├── login.html
 │
+├── pages/
+│   ├── login.html
+│   ├── calendar.html
+│   ├── schedule.html
+│   ├── popup.html
+│   └── sudebar.html
+|
 ├── css/
 │   ├── common.css
 │   ├── login.css
