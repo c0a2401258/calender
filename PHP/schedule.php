@@ -57,6 +57,28 @@ if($action == "insert"){
 
     header('Content-Type: application/json');
     echo json_encode($schedules);
+}else if($action == "update"){
+    // 予定の変更
+    $schedule_id = $data['schedule_id'];  //予定IDを取得
+    $title = $data['title'];  //予定のタイトルを取得
+    $description = $data['description'];  //予定の詳細を取得
+    $start_time = $data['start_time'];  //予定の開始時間を取得
+    $end_time = $data['end_time'];  //予定の終了時間を取得
+    $category = $data['category'];  //予定のカテゴリを取得
+    $user_id = $data['user_id'];  //ユーザーIDを取得
+
+    $sql = "UPDATE schedule SET title = '$title', description = '$description', start_time = '$start_time', end_time = '$end_time', category = '$category' WHERE id = '$schedule_id' AND user_id = '$user_id'";
+
+    $result = $conn->query($sql);
+
+    if($result){
+        $response = array("status" => "success", "message" => "予定が更新されました");
+    }else{
+        $response = array("status" => "error", "message" => "予定の更新に失敗しました");
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 
 ?>
