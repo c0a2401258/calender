@@ -1,3 +1,5 @@
+-- 課題テーブル
+-- 課題ID・ユーザーID・講義ID・課題名・締切・未提出/提出済
 USE calendar_db;
 
 create table assignments(

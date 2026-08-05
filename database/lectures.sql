@@ -1,3 +1,5 @@
+-- 講義テーブル一覧
+-- 講義ID・ユーザID・講義名・曜日・時限・教室・担当教員
 USE calendar_db;
 
 create table lectures(
