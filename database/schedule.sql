@@ -1,3 +1,5 @@
+-- 予定テーブル
+-- 予定ID・ユーザーID・予定名・詳細・開始日時・終了日時・作成日時・カテゴリー・
 USE calendar_db;
 
 create table schedule(
