@@ -57,6 +57,7 @@ if($action == "insert"){
 
     header('Content-Type: application/json');
     echo json_encode($schedules);
+    
 }else if($action == "update"){
     // 予定の変更
     $schedule_id = $data['schedule_id'];  //予定IDを取得
@@ -75,6 +76,24 @@ if($action == "insert"){
         $response = array("status" => "success", "message" => "予定が更新されました");
     }else{
         $response = array("status" => "error", "message" => "予定の更新に失敗しました");
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
+
+}else if($action == "delete"){
+    // 予定の削除
+    $schedule_id = $data['schedule_id'];  //予定IDを取得
+    $user_id = $data['user_id'];  //ユーザーIDを取得
+
+    $sql = "DELETE FROM schedule WHERE id = '$schedule_id' AND user_id = '$user_id'";
+
+    $result = $conn->query($sql);
+
+    if($result){
+        $response = array("status" => "success", "message" => "予定が削除されました");
+    }else{
+        $response = array("status" => "error", "message" => "予定の削除に失敗しました");
     }
 
     header('Content-Type: application/json');
