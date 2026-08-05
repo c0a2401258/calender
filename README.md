@@ -58,7 +58,6 @@ C：feature/backend
 calendar-app/
 │
 ├── index.html
-├── login.html
 │
 ├── pages/
 │   ├── login.html
@@ -97,6 +96,8 @@ calendar-app/
 │   └── user.php
 │
 ├── images/
+│
+├── database/
 │
 └── README.md
 ```
