@@ -37,7 +37,21 @@ if($action == "insert"){
 
     header('Content-Type: application/json');
     echo json_encode($response);
+}else if($action == 'select'){
+    // 講義の取得
+    $user_id = $data['user_id'];  // ユーザーIDを取得
+
+    $sql = "SELECT * FROM lectures WHERE user_id = '$user_id'";
+
+    $result = $conn->query($sql);
+
+    $lectures = array();
+
+    while($row = $result->fetch_assoc()){
+        $lectures[] = $row;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($lectures);
 }
-
-
 ?>
