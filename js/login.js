@@ -3,98 +3,65 @@
 // 担当：B
 // =================================
 
-// ログイン
 
-// ログアウト
+ログイン処理
+async function login() {
 
-// 自動ログイン
+    // 入力値取得
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-// =================================
-// ログイン
-// 担当：B
-// =================================
+    // エラーメッセージ表示用
+    const message = document.getElementById("login-message");
 
-function login() {
-
-    const username =
-        document.getElementById("username").value;
-
-    const password =
-        document.getElementById("password").value;
-
-    const message =
-        document.getElementById("login-message");
-
-    if(username === "" || password === ""){
+    // 未入力チェック
+    if (username === "" || password === "") {
 
         message.textContent =
             "ユーザー名とパスワードを入力してください";
 
+        message.style.color = "red";
+
         return;
     }
 
-    message.textContent =
-        "ログイン処理を実行しました";
+    try {
+
+        // PHPへ送信
+        const result = await post(
+            "php/login.php",
+            {
+                username: username,
+                password: password
+            }
+        );
+
+        // ログイン成功
+        if (result.status === "success") {
+
+            message.textContent = "ログイン成功";
+
+            message.style.color = "green";
+
+            // カレンダー画面へ移動
+            showCalendar();
+
+        }
+        // ログイン失敗
+        else {
+
+            message.textContent = result.message;
+
+            message.style.color = "red";
+        }
+
+    } catch (error) {
+
+        message.textContent =
+            "通信エラーが発生しました";
+
+        message.style.color = "red";
+
+        console.error(error);
+    }
 }
-
-// ログイン処理
-// async function login() {
-
-//     // 入力値取得
-//     const username = document.getElementById("username").value;
-//     const password = document.getElementById("password").value;
-
-//     // エラーメッセージ表示用
-//     const message = document.getElementById("login-message");
-
-//     // 未入力チェック
-//     if (username === "" || password === "") {
-
-//         message.textContent =
-//             "ユーザー名とパスワードを入力してください";
-
-//         message.style.color = "red";
-
-//         return;
-//     }
-
-//     try {
-
-//         // PHPへ送信
-//         const result = await post(
-//             "php/login.php",
-//             {
-//                 username: username,
-//                 password: password
-//             }
-//         );
-
-//         // ログイン成功
-//         if (result.status === "success") {
-
-//             message.textContent = "ログイン成功";
-
-//             message.style.color = "green";
-
-//             // カレンダー画面へ移動
-//             showCalendar();
-
-//         }
-//         // ログイン失敗
-//         else {
-
-//             message.textContent = result.message;
-
-//             message.style.color = "red";
-//         }
-
-//     } catch (error) {
-
-//         message.textContent =
-//             "通信エラーが発生しました";
-
-//         message.style.color = "red";
-
-//         console.error(error);
-//     }
-// }
