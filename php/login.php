@@ -12,11 +12,11 @@ include "db.php";
 $data = json_decode(file_get_contents('php://input'), true);
 
 //　受け取った値（変数変換JSON→PHP）
-$username = $data['username'];
+$email = $data['email'];
 $password = $data['password'];
 
 // SQL
-$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+$sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
 
 // SQL実行
 $result = $conn->query($sql);
