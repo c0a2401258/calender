@@ -1,8 +1,110 @@
 /* ================================= */
-/* スマホ・PC切り替え */
+/* スマホ・タブレット対応 */
 /* 担当：A */
 /* ================================= */
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
+
+    /* ------------------------- */
+    /* ヘッダー */
+    /* ------------------------- */
+
+    header {
+        height: auto;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .user-info {
+        font-size: 16px;
+    }
+
+
+    /* ------------------------- */
+    /* 全体 */
+    /* ------------------------- */
+
+    .container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+
+    /* ------------------------- */
+    /* サイドバー */
+    /* ------------------------- */
+
+    aside {
+        width: 100%;
+
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+
+        padding: 15px;
+    }
+
+
+    /* ------------------------- */
+    /* メイン */
+    /* ------------------------- */
+
+    main {
+        width: 100%;
+        padding: 15px;
+    }
+
+
+    /* ------------------------- */
+    /* カレンダー */
+    /* ------------------------- */
+
+    #calendar-area {
+        min-height: 300px;
+        padding: 15px;
+    }
+
+    #calendar-area h2 {
+        font-size: 20px;
+    }
+
+
+    /* ------------------------- */
+    /* カレンダーの日付 */
+    /* ------------------------- */
+
+    .days div {
+        min-height: 50px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .weekdays div {
+        padding: 7px 2px;
+        font-size: 14px;
+    }
+
+
+    /* ------------------------- */
+    /* 今日の予定・課題 */
+    /* ------------------------- */
+
+    .bottom-area {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #schedule-area,
+    #task-area {
+        min-height: 180px;
+    }
 
 }

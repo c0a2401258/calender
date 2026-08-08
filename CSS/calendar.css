@@ -1,8 +1,318 @@
 /* ================================= */
 /* メインカレンダー */
-/* 担当：A */
 /* ================================= */
 
-#calendar-page{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+
+/* 全体 */
+
+body {
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+
+/* ヘッダー */
+
+header {
+    height: 70px;
+
+    background-color: #2c7be5;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 30px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+.user-info {
+    font-size: 18px;
+}
+
+
+/* 全体レイアウト */
+
+.container {
+    display: flex;
+    min-height: calc(100vh - 70px);
+}
+
+
+/* サイドバー */
+
+aside {
+    width: 250px;
+
+    background-color: white;
+
+    border-right: 1px solid #ddd;
+
+    padding: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* メイン */
+
+main {
+    flex: 1;
+
+    padding: 25px;
+
+    min-width: 0;
+}
+
+
+/* ================================= */
+/* カレンダー */
+/* ================================= */
+
+#calendar-area {
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#calendar-area h2 {
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}
+
+
+/* カレンダー上部 */
+
+.calendar-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    font-size: 20px;
+}
+
+
+/* ボタン */
+
+.calendar-header button {
+    border: none;
+
+    background-color: #2c7be5;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.calendar-header button:hover {
+    background-color: #1a68d1;
+}
+
+
+/* ================================= */
+/* カレンダー本体 */
+/* ================================= */
+
+#calendar {
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    width: 100%;
+
+    border-top: 1px solid #ddd;
+
+    border-left: 1px solid #ddd;
+}
+
+
+/* 曜日 */
+
+#calendar .weekday {
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    background-color: #f5f5f5;
+
+    border-right: 1px solid #ddd;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* 日曜日 */
+
+#calendar .sunday {
+    color: #e53935;
+}
+
+
+/* 土曜日 */
+
+#calendar .saturday {
+    color: #1976d2;
+}
+
+
+/* 日付 */
+
+#calendar .day {
+
+    min-height: 90px;
+
+    padding: 8px;
+
+    background-color: white;
+
+    border-top: 1px solid #add;
+
+    border-right: 1px solid #ddd;
+
+    border-bottom: 1px solid #ddd;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+/* 日付にマウスを乗せたとき */
+
+#calendar .day:hover {
+
+    background-color: #f0f6ff;
+}
+
+
+/* 空白 */
+
+#calendar .empty {
+
+    min-height: 90px;
+
+    background-color: #fafafa;
+
+    border-right: 1px solid #ddd;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* 今日 */
+
+#calendar .today {
+
+    background-color: #e8f1ff;
+
+    box-shadow: inset 0 0 0 2px #2c7be5;
+
+    font-weight: bold;
+}
+
+
+/* ================================= */
+/* 今日の予定・課題 */
+/* ================================= */
+
+.bottom-area {
+
+    display: flex;
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+
+#schedule-area,
+#task-area {
+
+    flex: 1;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    min-height: 220px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#schedule-area h2,
+#task-area h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+/* リスト */
+
+#schedule-area ul,
+#task-area ul {
+
+    list-style: none;
+}
+
+
+#schedule-area li,
+#task-area li {
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+/* ================================= */
+/* ボタン・リンク */
+/* ================================= */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

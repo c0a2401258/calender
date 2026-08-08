@@ -1,4 +1,4 @@
-<div class="calendar-page">
+<!-- <div class="calendar-page">
     <h1>カレンダー画面</h1>
 
     <p>ここにカレンダーを表示します！</p>
@@ -7,3 +7,90 @@
         今日の予定
     </button>
 </div>
+ -->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Scheduler</title>
+
+    <link rel="stylesheet" href="../CSS/common.css">
+    <link rel="stylesheet" href="../CSS/calendar.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+
+        <h1>Campus Scheduler</h1>
+
+        <div class="user-info">
+            <span>ユーザー名</span>
+        </div>
+
+    </header>
+
+    <!-- 全体 -->
+    <div class="container">
+
+        <!-- サイドバー -->
+        <aside id="sidebar">
+
+        </aside>
+
+        <!-- メイン -->
+        <main>
+
+            <!-- カレンダー -->
+            <section id="calendar-area">
+
+                <h2>カレンダー</h2>
+
+                <div class="calendar-header">
+                    <button id="prevBtn">◀</button>
+
+                    <span id="monthYear"></span>
+
+                    <button id="nextBtn">▶</button>
+
+                    <button id="todayBtn">今日</button>
+                </div>
+                
+                <div id="calendar"></div>
+
+            </section>
+
+            <!-- 下段 -->
+            <div class="bottom-area">
+
+                <!-- 今日の予定 -->
+                <section id="schedule-area">
+
+                    <h2>今日の予定</h2>
+
+                </section>
+
+                <!-- 今日の課題 -->
+                <section id="task-area">
+
+                    <h2>課題</h2>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="../js/calendar.js"></script>
+
+</body>
+
+</html>
