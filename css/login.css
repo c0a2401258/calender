@@ -1,0 +1,93 @@
+/* ================================= */
+/* ログイン画面 */
+/* 担当：B */
+/* ================================= */
+
+.login-page{
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#ffffff;
+}
+
+.login-container{
+    width:420px;
+    max-width:90%;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.login-container h1{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:60px;
+
+    color:#333333;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+
+    margin-bottom:35px;
+}
+
+.input-group label{
+    font-size:18px;
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+    color:#333333;
+}
+
+.input-group input{
+    height:55px;
+
+    border:2px solid #dddddd;
+    border-radius:10px;
+
+    padding:0 15px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.input-group input:focus{
+    border-color:#999999;
+}
+
+.login-button{
+    width:200px;
+    height:60px;
+
+    margin:40px auto 0;
+
+    border:none;
+    border-radius:30px;
+
+    background:#c8c8c8;
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.login-button:hover{
+    background:#a9a9a9;
+}
+
+#login-message{
+    text-align:center;
+    margin-top:20px;
+}

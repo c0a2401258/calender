@@ -1,3 +1,5 @@
+-- ユーザテーブル
+-- ユーザーID・ログイン名・メールアドレス・パスワード・登録日時
 USE calendar_db;
 
 CREATE TABLE users(

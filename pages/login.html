@@ -1,10 +1,52 @@
+
+<!-- ================================= -->
+<!-- ログイン画面 -->
+<!-- 担当：B -->
+<!-- ================================= -->
+
 <div class="login-page">
-    <h1>ログイン</h1>
 
-    <input type="text" placeholder="ユーザー名">
-    <input type="password" placeholder="パスワード">
+    <div class="login-container">
 
-    <button onclick="showCalendar()">
-        ログイン
-    </button>
+        <h1>パスワードでログイン</h1>
+
+        <div class="input-group">
+
+            <label for="username">
+                メールアドレス / ログインID
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="メールアドレス / ログインID"
+            >
+
+        </div>
+
+        <div class="input-group">
+
+            <label for="password">
+                パスワード
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="パスワード"
+            >
+
+        </div>
+
+        <button
+            class="login-button"
+            onclick="login()"
+        >
+            ログイン
+        </button>
+
+        <p id="login-message"></p>
+
+    </div>
+
 </div>
