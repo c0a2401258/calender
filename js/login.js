@@ -8,14 +8,14 @@
 async function login() {
 
     // 入力値取得
-    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     // エラーメッセージ表示用
     const message = document.getElementById("login-message");
 
     // 未入力チェック
-    if (username === "" || password === "") {
+    if (email === "" || password === "") {
 
         message.textContent =
             "ユーザー名とパスワードを入力してください";
@@ -31,7 +31,7 @@ async function login() {
         const result = await post(
             "php/login.php",
             {
-                username: username,
+                email: email,
                 password: password
             }
         );
