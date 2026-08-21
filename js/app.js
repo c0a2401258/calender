@@ -81,6 +81,18 @@ function showSchedule() {
 //-------------------------------------
 // 起動時
 //-------------------------------------
+function showPopup() {
+
+    loadPage(
+        "pages/popup.html",
+        "css/popup.css",
+        "js/popup.js"
+    );
+}
+
+//-------------------------------------
+// 起動時
+//-------------------------------------
 window.onload = function () {
 
     showLogin();
