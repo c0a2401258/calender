@@ -45,6 +45,8 @@ async function login() {
 
             // カレンダー画面へ移動
             showCalendar();
+            showSchedule();
+            showPopup();
 
         }
         // ログイン失敗
