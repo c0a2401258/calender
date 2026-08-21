@@ -6,8 +6,27 @@
 // 現在表示している年月
 let currentDate = new Date();
 
+//現在の表示モード
+let currentMode = "work";
+
+const schedules = {
+    work: {
+        "2026-08-11": ["授業 10:00"],
+        "2026-08-12": ["ゼミ 13:00"],
+        "2026-08-15": ["課題提出"]
+    },
+
+    private: {
+        "2026-08-11": ["友達と食事 18:00"],
+        "2026-08-13": ["買い物 15:00"],
+        "2026-08-16": ["映画 14:00"]
+    }
+}
+
 const calendar = document.getElementById("calendar");
 const monthYear = document.getElementById("monthYear");
+const workBtn = document.getElementById("workBtn");
+const privateBtn = document.getElementById("privateBtn");
 
 
 // カレンダーを表示
@@ -79,10 +98,28 @@ function renderCalendar() {
     for (let day = 1; day <= lastDate; day++) {
 
         const cell = document.createElement("div");
-
         cell.classList.add("day");
 
-        cell.textContent = day;
+        //日付を変更
+        const dateText = document.createElement("div");
+        dateText.textContent = day;
+        cell.appendChild(dateText);
+
+        //  YYYY-MM-DD形式の日付を作成
+        const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+        //  現在選択しているモード予定を取得
+        const daySchedules = schedules[currentMode][dateKey] || [];
+
+        //  予定を表示
+        daySchedules.forEach(schedule => {
+            const event = document.createElement("div");
+            event.classList.add("calendar-event");
+            event.textContent = schedule;
+            cell.appendChild(event);
+        });
+
+
 
 
         // 日曜日
@@ -145,6 +182,27 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 document.getElementById("todayBtn").addEventListener("click", () => {
 
     currentDate = new Date();
+
+    renderCalendar();
+});
+
+workBtn.addEventListener("click", () => {
+
+    currentMode = "work";
+
+    workBtn.classList.add("mode-active");
+    privateBtn.classList.remove("mode-active");
+
+    renderCalendar();
+});
+
+
+privateBtn.addEventListener("click", () => {
+
+    currentMode = "private";
+
+    privateBtn.classList.add("mode-active");
+    workBtn.classList.remove("mode-active");
 
     renderCalendar();
 });
