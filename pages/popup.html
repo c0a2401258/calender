@@ -1,0 +1,97 @@
+<!-- ================================= -->
+<!-- 予定追加 -->
+<!-- 担当：B -->
+<!-- ================================= -->
+
+<div id="popup" class="popup-overlay hidden">
+
+    <div class="popup-container">
+
+        <div class="popup-header">
+            <h2>予定を追加</h2>
+
+            <button
+                class="close-btn"
+                onclick="closePopup()">
+                ×
+            </button>
+        </div>
+
+        <div class="popup-body">
+
+            <div class="form-group">
+                <label>タイトル</label>
+                <input
+                    type="text"
+                    id="schedule-title"
+                    placeholder="予定のタイトルを入力">
+            </div>
+
+            <div class="form-group">
+                <label>詳細（任意）</label>
+                <textarea
+                    id="schedule-description"
+                    placeholder="予定の詳細を入力"></textarea>
+            </div>
+
+            <div class="datetime-area">
+
+                <div class="form-group">
+                    <label>開始日時</label>
+                    <input
+                        type="datetime-local"
+                        id="schedule-start">
+                </div>
+
+                <div class="form-group">
+                    <label>終了日時</label>
+                    <input
+                        type="datetime-local"
+                        id="schedule-end">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>カテゴリ</label>
+
+                <select id="schedule-category">
+                    <option value="学業">
+                        学業
+                    </option>
+
+                    <option value="課題">
+                        課題
+                    </option>
+
+                    <option value="アルバイト">
+                        アルバイト
+                    </option>
+
+                    <option value="プライベート">
+                        プライベート
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="cancel-btn"
+                onclick="closePopup()">
+                キャンセル
+            </button>
+
+            <button
+                class="save-btn"
+                onclick="saveSchedule()">
+                保存
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

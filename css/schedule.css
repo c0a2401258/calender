@@ -3,6 +3,81 @@
 /* 担当：B */
 /* ================================= */
 
-#schedule-page{
 
+#schedule-page{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+#schedule-page h1{
+    margin-bottom: 25px;
+    color: #34495e;
+}
+
+#schedule-list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: #ffffff;
+    border-left: 6px solid #8cb8cb;
+    border-radius: 12px;
+
+    padding: 15px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.time{
+    font-size: 19px;
+    font-weight: bold;
+    min-width: 70px;
+    color: #2c3e50;
+}
+
+.content h3{
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+.content p{
+    color: #777;
+}
+
+.schedule-buttons{
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.add-button{
+    background: #8cb8cb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+.back-button{
+    background: #d0d7dc;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+.add-button:hover{
+    background: #709fb4;
+}
+
+.back-button:hover{
+    background: #bcc4ca;
 }

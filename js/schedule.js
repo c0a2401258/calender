@@ -3,10 +3,40 @@
 // 担当：B
 // =================================
 
-// 追加
+// ポップアップを開く
+function openSchedulePopup(){
 
-// 表示
+    const popup =
+        document.getElementById("popup");
 
-// 編集
+    popup.classList.remove("hidden");
+}
 
-// 削除
+// ポップアップを閉じる
+function closeSchedulePopup(){
+
+    const popup =
+        document.getElementById("popup");
+
+    popup.classList.add("hidden");
+}
+
+// 予定追加
+async function addSchedule(){
+
+}
+
+// 予定表示
+async function loadSchedules(){
+
+}
+
+// 予定編集
+async function editSchedule(id){
+
+}
+
+// 予定削除
+async function deleteSchedule(id){
+
+}
