@@ -1,14 +1,49 @@
-<div class="schedule-page">
+<div id="schedule-page">
+
     <h1>今日の予定</h1>
 
-    <ul>
-        <li>09:00 大学</li>
-        <li>13:00 バイト</li>
-        <li>20:00 友達とご飯</li>
-        <li>23:00 運動</li>
-    </ul>
+    <div id="schedule-list">
 
-    <button onclick="showCalendar()">
-        戻る
-    </button>
+        <div class="schedule-card">
+            <span class="time">09:00</span>
+            <div class="content">
+                <h3>大学</h3>
+                <p>プログラミング演習</p>
+            </div>
+        </div>
+
+        <div class="schedule-card">
+            <span class="time">13:00</span>
+            <div class="content">
+                <h3>アルバイト</h3>
+                <p>コンビニ勤務</p>
+            </div>
+        </div>
+
+        <div class="schedule-card">
+            <span class="time">20:00</span>
+            <div class="content">
+                <h3>友達とご飯</h3>
+                <p>駅前レストラン</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="schedule-buttons">
+
+        <button
+            class="add-button"
+            onclick="openSchedulePopup()">
+            ＋ 予定追加
+        </button>
+
+        <button
+            class="back-button"
+            onclick="showCalendar()">
+            戻る
+        </button>
+
+    </div>
+
 </div>

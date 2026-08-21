@@ -4,5 +4,53 @@
 /* ================================= */
 
 #sidebar{
+    background: #edf4f8;
+    border-right: 1px solid #d9e5eb;
+    padding: 20px;
+}
 
+.sidebar-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-user{
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d9e5eb;
+}
+
+.sidebar-user h3{
+    font-size: 20px;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.sidebar-user p{
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.sidebar-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #dfeef5;
+    color: #34495e;
+    font-size: 15px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.menu-item:hover{
+    background: #c9e2ec;
+    transform: translateX(4px);
 }

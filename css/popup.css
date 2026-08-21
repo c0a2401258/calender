@@ -3,6 +3,138 @@
 /* 担当：B */
 /* ================================= */
 
-#popup{
+.popup-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
 
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.popup-container{
+    width: 650px;
+    max-width: 95%;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.popup-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.popup-header h2{
+    color: #34495e;
+    font-size: 28px;
+}
+
+.close-btn{
+    border: none;
+    background: none;
+
+    font-size: 28px;
+
+    color: #888;
+}
+
+.close-btn:hover{
+    color: #444;
+}
+
+.popup-body{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label{
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    border: 1px solid #dce4ea;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    font-size: 15px;
+}
+
+.form-group textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+
+.datetime-area{
+    display: flex;
+    gap: 15px;
+}
+
+.datetime-area .form-group{
+    flex: 1;
+}
+
+.popup-footer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.cancel-btn{
+    border: none;
+
+    background: #e6e9ec;
+
+    padding: 12px 25px;
+
+    border-radius: 10px;
+}
+
+.cancel-btn:hover{
+    background: #d6dade;
+}
+
+.save-btn{
+    border: none;
+
+    background: #5fa9dd;
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 10px;
+}
+
+.save-btn:hover{
+    background: #4f97cc;
 }

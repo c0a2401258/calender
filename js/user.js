@@ -3,8 +3,22 @@
 // 担当：B
 // =================================
 
+// ユーザー情報取得
+async function loadUser(){
+
+}
+
 // 名前変更
+async function changeUserName(){
 
-// 設定
+}
 
-// カテゴリー
+// カテゴリ設定
+async function saveCategory(){
+
+}
+
+// 設定保存
+async function saveSettings(){
+
+}
