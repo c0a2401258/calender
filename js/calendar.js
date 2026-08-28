@@ -7,7 +7,7 @@
 let currentDate = new Date();
 
 //現在の表示モード
-let currentMode = "work";
+//let currentMode = "work";
 
 const schedules = {
     work: {
@@ -25,8 +25,8 @@ const schedules = {
 
 const calendar = document.getElementById("calendar");
 const monthYear = document.getElementById("monthYear");
-const workBtn = document.getElementById("workBtn");
-const privateBtn = document.getElementById("privateBtn");
+const workCheck = document.getElementById("workCheck");
+const privateCheck = document.getElementById("privateCheck");
 
 
 // カレンダーを表示
@@ -108,16 +108,42 @@ function renderCalendar() {
         //  YYYY-MM-DD形式の日付を作成
         const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-        //  現在選択しているモード予定を取得
-        const daySchedules = schedules[currentMode][dateKey] || [];
+        // 仕事の予定を表示
+        if (workCheck.checked) {
 
-        //  予定を表示
-        daySchedules.forEach(schedule => {
-            const event = document.createElement("div");
-            event.classList.add("calendar-event");
-            event.textContent = schedule;
-            cell.appendChild(event);
-        });
+            const workSchedules = schedules.work[dateKey] || [];
+
+            workSchedules.forEach(function (schedule) {
+
+                const event = document.createElement("div");
+
+                event.classList.add("calendar-event");
+                event.classList.add("work-event");
+
+                event.textContent = schedule;
+
+                cell.appendChild(event);
+            });
+        }
+
+
+        // プライベートの予定を表示
+        if (privateCheck.checked) {
+
+            const privateSchedules = schedules.private[dateKey] || [];
+
+            privateSchedules.forEach(function (schedule) {
+
+                const event = document.createElement("div");
+
+                event.classList.add("calendar-event");
+                event.classList.add("private-event");
+
+                event.textContent = schedule;
+
+                cell.appendChild(event);
+            });
+        }
 
 
 
@@ -186,27 +212,26 @@ document.getElementById("todayBtn").addEventListener("click", () => {
     renderCalendar();
 });
 
-workBtn.addEventListener("click", () => {
 
-    currentMode = "work";
-
-    workBtn.classList.add("mode-active");
-    privateBtn.classList.remove("mode-active");
-
+workCheck.addEventListener("change", () => {
     renderCalendar();
 });
-
-
-privateBtn.addEventListener("click", () => {
-
-    currentMode = "private";
-
-    privateBtn.classList.add("mode-active");
-    workBtn.classList.remove("mode-active");
-
+privateCheck.addEventListener("change", () => {
     renderCalendar();
-});
-
+})
 
 // 初期表示
 renderCalendar();
+
+// =================================
+// サイドバーが出てくる
+// =================================
+
+const sidebarBtn = document.getElementById("sidebarBtn");
+const sidebar = document.getElementById("sidebar");
+
+sidebarBtn.addEventListener("click", () => {
+
+    sidebar.classList.toggle("open");
+
+});

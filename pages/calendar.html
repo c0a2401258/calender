@@ -28,6 +28,10 @@
     <!-- ヘッダー -->
     <header>
 
+        <!--サイドバーを開くボタン-->
+        <button id="sidebarBtn" class="sidebar-btn">
+            ☰
+        </button>
         <h1>Campus Scheduler</h1>
 
         <div class="user-info">
@@ -41,7 +45,13 @@
 
         <!-- サイドバー -->
         <aside id="sidebar">
-
+            <nav>
+                <ul>
+                    <li>カレンダー</a></li>
+                    <li>今日の予定</a></li>
+                    <li>課題</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- メイン -->
@@ -53,8 +63,19 @@
                 <h2>カレンダー</h2>
 
                 <div class="calendar-mode">
-                    <button id="workBtn" class="mode-active">仕事</button>
-                    <button id="privateBtn">プライベート</button>
+                    <samp>表示する予定：</samp>
+
+                    <label>
+                        <input type="checkbox" id="workCheck" checked>
+                        仕事
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="privateCheck" checked>
+                        プライベート
+                    </label>
+                    <!-- <button id="workBtn" class="mode-active">仕事</button>
+                    <button id="privateBtn">プライベート</button> -->
                 </div>
 
                 <div class="calendar-header">
