@@ -223,10 +223,21 @@ privateCheck.addEventListener("change", () => {
 // 初期表示
 renderCalendar();
 
-// =================================
-// サイドバーが出てくる
-// =================================
+// sidebar.htmlを読み込む
+async function loadSidebar() {
 
+    const response =
+        await fetch("pages/sidebar.html");
+
+    const html =
+        await response.text();
+
+    document.getElementById("sidebar").innerHTML = html;
+}
+
+loadSidebar();
+
+// サイドバーが出てくる
 const sidebarBtn = document.getElementById("sidebarBtn");
 const sidebar = document.getElementById("sidebar");
 

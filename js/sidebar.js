@@ -3,7 +3,8 @@
 // 担当：B
 // =================================
 
-function showCalendar(){
+// カレンダー画面
+function showCalendar() {
 
     loadPage(
         "pages/calendar.html",
@@ -12,7 +13,8 @@ function showCalendar(){
     );
 }
 
-function showSchedule(){
+// 予定画面
+function showSchedule() {
 
     loadPage(
         "pages/schedule.html",
@@ -21,20 +23,28 @@ function showSchedule(){
     );
 }
 
-// 後で追加
+// サイドバー開閉
+function toggleSidebar() {
 
-function showLecture(){
+    const sidebar =
+        document.getElementById("sidebar");
 
+    if (!sidebar) {
+        return;
+    }
+
+    sidebar.classList.toggle("open");
 }
 
-function showAssignment(){
+// サブメニュー開閉
+function toggleSubMenu() {
 
-}
+    const subMenu =
+        document.getElementById("scheduleSubMenu");
 
-function showNotification(){
+    if (!subMenu) {
+        return;
+    }
 
-}
-
-function showSetting(){
-
+    subMenu.classList.toggle("open");
 }
