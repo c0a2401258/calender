@@ -4,7 +4,7 @@
 // =================================
 
 
-ログイン処理
+//ログイン処理
 async function login() {
 
     // 入力値取得
@@ -45,8 +45,7 @@ async function login() {
 
             // カレンダー画面へ移動
             showCalendar();
-            showSchedule();
-            showPopup();
+
 
         }
         // ログイン失敗
