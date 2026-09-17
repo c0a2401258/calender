@@ -429,3 +429,15 @@ a {
 
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
+
+/* ================================= */
+/* Googleカレンダーのような見た目
+/* ================================= */
+
+.container {
+    transition: margin-left 0.3s ease;
+}
+
+.container.sidebar-open {
+    margin-left: 250px;
+}
