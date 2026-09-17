@@ -180,13 +180,16 @@ main {
 
     align-items: center;
 
-    justify-content: space-between;
+    gap: 10px;
 
     margin-bottom: 15px;
 }
 
-.calendar-header h3 {
+.calendar-header span#monthYear {
     font-size: 20px;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: center;
 }
 
 
@@ -399,8 +402,25 @@ a {
 
 .calendar-mode {
     display: flex;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+
+    margin-left: auto;
+    margin-right: 10px;
+
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.calendar-mode label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.calendar-mode input[type="checkbox"] {
+    cursor: pointer;
 }
 
 .calendar-mode button {
