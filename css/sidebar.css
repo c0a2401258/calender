@@ -54,3 +54,17 @@
     background: #c9e2ec;
     transform: translateX(4px);
 }
+
+.menu-title {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #34495e;
+
+    margin-top: 15px;
+
+    margin-bottom: 10px;
+
+}

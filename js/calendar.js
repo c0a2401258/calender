@@ -240,9 +240,12 @@ loadSidebar();
 // サイドバーが出てくる
 const sidebarBtn = document.getElementById("sidebarBtn");
 const sidebar = document.getElementById("sidebar");
+const mainContainer = document.getElementById("mainContainer");
 
 sidebarBtn.addEventListener("click", () => {
 
     sidebar.classList.toggle("open");
+
+    mainContainer.classList.toggle("sidebar-open");
 
 });

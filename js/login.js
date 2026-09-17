@@ -45,8 +45,6 @@ async function login() {
 
             // カレンダー画面へ移動
             showCalendar();
-
-
         }
         // ログイン失敗
         else {
