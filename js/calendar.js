@@ -107,7 +107,10 @@ function renderCalendar() {
 
         //  YYYY-MM-DD形式の日付を作成
         const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-
+        // 日付をクリックしたら予定ページへ移動
+        cell.addEventListener("click", () => {
+            window.location.href = "schedule.html";
+        });
         // 仕事の予定を表示
         if (workCheck.checked) {
 
