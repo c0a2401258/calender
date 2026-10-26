@@ -109,7 +109,7 @@ function renderCalendar() {
         const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
         // 日付をクリックしたら予定ページへ移動
         cell.addEventListener("click", () => {
-            window.location.href = "schedule.html";
+            window.location.href = '/calender/pages/schedule.html?date=${dateKey}';
         });
         // 仕事の予定を表示
         if (workCheck.checked) {

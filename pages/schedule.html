@@ -1,49 +1,111 @@
-<div id="schedule-page">
 
-    <h1>今日の予定</h1>
-
-    <div id="schedule-list">
-
-        <div class="schedule-card">
-            <span class="time">09:00</span>
-            <div class="content">
-                <h3>大学</h3>
-                <p>プログラミング演習</p>
-            </div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Scheduler - スケジュール</title>
+    <link rel="stylesheet" href="../css/schedule.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <button id="menuBtn" class="icon-button">☰</button>
+            <span class="brand-mark">C</span>
+            <span class="brand-name">Campus Scheduler</span>
         </div>
 
-        <div class="schedule-card">
-            <span class="time">13:00</span>
-            <div class="content">
-                <h3>アルバイト</h3>
-                <p>コンビニ勤務</p>
-            </div>
+        <div class="top-actions">
+            <button id="todayBtn" class="outline-button">今日</button>
+            <button id="prevBtn" class="icon-button">‹</button>
+            <button id="nextBtn" class="icon-button">›</button>
+            <h1 id="dateHeading" class="date-heading"></h1>
+            <button id="addBtn" class="primary-button">＋ 予定を作成</button>
         </div>
+    </header>
 
-        <div class="schedule-card">
-            <span class="time">20:00</span>
-            <div class="content">
-                <h3>友達とご飯</h3>
-                <p>駅前レストラン</p>
+    <main class="page">
+        <section class="day-calendar">
+            <div class="all-day-row">
+                <div class="time-label">終日</div>
+                <div id="allDayEvents" class="all-day-events"></div>
             </div>
+
+            <div id="timeGrid" class="time-grid"></div>
+        </section>
+
+        <div class="footer-actions">
+            <button id="backBtn" class="outline-button">
+                カレンダーに戻る
+            </button>
+            <span class="hint">予定をクリックすると編集できます</span>
         </div>
+    </main>
 
-    </div>
+    <!-- 予定の追加・編集画面 -->
+    <dialog id="eventDialog" class="event-dialog">
+        <form id="eventForm">
+            <div class="dialog-heading">
+                <h2 id="dialogTitle">予定を作成</h2>
+                <button type="button" id="closeDialogBtn"
+                        class="icon-button">×</button>
+            </div>
 
-    <div class="schedule-buttons">
+            <label class="field">
+                予定名
+                <input id="eventTitle" type="text" required
+                       maxlength="80" placeholder="例：授業">
+            </label>
 
-        <button
-            class="add-button"
-            onclick="openSchedulePopup()">
-            ＋ 予定追加
-        </button>
+            <label class="field">
+                日付
+                <input id="eventDate" type="date" required>
+            </label>
 
-        <button
-            class="back-button"
-            onclick="showCalendar()">
-            戻る
-        </button>
+            <div class="field-row">
+                <label class="field">
+                    開始時刻
+                    <input id="eventStart" type="time"
+                           value="09:00" required>
+                </label>
 
-    </div>
+                <label class="field">
+                    終了時刻
+                    <input id="eventEnd" type="time"
+                           value="10:00" required>
+                </label>
+            </div>
 
-</div>
+            <label class="field">
+                説明・場所
+                <textarea id="eventDescription" rows="2"
+                          placeholder="場所やメモ（任意）"></textarea>
+            </label>
+
+            <label class="field">
+                色
+                <select id="eventColor">
+                    <option value="blue">青</option>
+                    <option value="green">緑</option>
+                    <option value="orange">オレンジ</option>
+                    <option value="purple">紫</option>
+                </select>
+            </label>
+
+            <p id="formError" class="form-error"></p>
+
+            <div class="dialog-actions">
+                <button type="button" id="deleteBtn"
+                        class="delete-button hidden">削除</button>
+                <span class="action-spacer"></span>
+                <button type="button" id="cancelBtn"
+                        class="outline-button">キャンセル</button>
+                <button type="submit"
+                        class="primary-button">保存</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="../js/schedule.js"></script>
+</body>
+</html>
