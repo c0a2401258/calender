@@ -42,13 +42,51 @@
     </header>
 
     <!-- 全体 -->
-    <div class="container">
+    <div class="container" id="mainContainer">
 
         <aside id="sidebar"></aside>
 
         <!-- メイン -->
         <main>
 
+            <!-- カレンダー -->
+            <section id="calendar-area">
+
+                <h2>カレンダー</h2>
+
+                <div class="calendar-header">
+
+                    <button id="prevBtn">◀</button>
+
+                    <span id="monthYear"></span>
+
+                    <div class="calendar-mode">
+
+                        <span>表示する予定：</span>
+
+                        <label>
+                            <input type="checkbox" id="workCheck" checked>
+                            仕事
+                        </label>
+
+                        <label>
+                            <input type="checkbox" id="privateCheck" checked>
+                            プライベート
+                        </label>
+
+                    </div>
+
+                    <button id="nextBtn">▶</button>
+
+                    <button id="todayBtn">今日</button>
+
+                </div>
+
+                <div id="calendar"></div>
+
+            </section>
+
+            <!-- 下段 -->
             <div class="bottom-area">
 
                 <!-- 今日の予定 -->
@@ -67,51 +105,13 @@
 
             </div>
 
-            <!-- カレンダー -->
-            <section id="calendar-area">
-
-                <!-- カレンダーのタイトルと表示設定 -->
-                <div class="calendar-title">
-                    <h2>カレンダー</h2>
-
-                    <div class="calendar-mode">
-                        <span>表示する予定：</span>
-
-                        <label>
-                            <input type="checkbox" id="workCheck" checked>
-                            仕事
-                        </label>
-
-                        <label>
-                            <input type="checkbox" id="privateCheck" checked>
-                            プライベート
-                        </label>
-                    </div>
-                </div>
-
-                <!-- カレンダー操作ボタン -->
-                <div class="calendar-header">
-                    <button id="prevBtn">◀</button>
-
-                    <span id="monthYear"></span>
-
-                    <button id="nextBtn">▶</button>
-
-                    <button id="todayBtn">今日</button>
-                </div>
-
-                <div id="calendar"></div>
-
-                <div id="calendar"></div>
-
-            </section>
-
-
         </main>
 
     </div>
 
     <script src="../js/calendar.js"></script>
+
+    <div id="popupContainer"></div>
 
 </body>
 
