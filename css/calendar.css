@@ -83,7 +83,10 @@ header h1 {
 /* 全体レイアウト */
 
 .container {
+    display: flex;
+
     min-height: calc(100vh - 70px);
+
     margin-top: 70px;
 }
 
@@ -98,7 +101,7 @@ header h1 {
     top: 70px;
     left: 0;
 
-    width: 250px;
+    width: 220px;
     height: calc(100vh - 70px);
 
     background-color: white;
@@ -158,6 +161,12 @@ main {
     padding: 25px;
 
     min-width: 0;
+
+    transition: transform 0.3s ease;
+}
+
+.sidebar-open main {
+    margin-left: 250px;
 }
 
 
@@ -489,10 +498,11 @@ a {
 /* Googleカレンダーのような見た目
 /* ================================= */
 
-.container {
-    transition: margin-left 0.3s ease;
+
+#mainContainer {
+    transition: transform 0.3s ease;
 }
 
-.container.sidebar-open {
-    margin-left: 250px;
+#mainContainer.sidebar-open main {
+    transform: translateX(0);
 }

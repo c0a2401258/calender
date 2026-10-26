@@ -111,6 +111,7 @@ function renderCalendar() {
         cell.addEventListener("click", () => {
             window.location.href = '/calender/pages/schedule.html?date=${dateKey}';
         });
+
         // 仕事の予定を表示
         if (workCheck.checked) {
 
@@ -239,6 +240,37 @@ async function loadSidebar() {
 }
 
 loadSidebar();
+
+async function loadPopup() {
+
+    const response =
+        await fetch("pages/popup.html");
+
+    const html =
+        await response.text();
+
+    document
+        .getElementById("popupContainer")
+        .innerHTML = html;
+}
+
+loadPopup();
+
+function openLecturePopup() {
+
+    const popup =
+        document.getElementById("popup");
+
+    popup.classList.remove("hidden");
+}
+
+function closePopup() {
+
+    const popup =
+        document.getElementById("popup");
+
+    popup.classList.add("hidden");
+}
 
 // サイドバーが出てくる
 const sidebarBtn = document.getElementById("sidebarBtn");
