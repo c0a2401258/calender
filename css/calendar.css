@@ -101,10 +101,12 @@ header h1 {
     top: 70px;
     left: 0;
 
-    width: 220px;
+    width: 250px;
     height: calc(100vh - 70px);
 
-    background-color: white;
+    background: #edf4f8;
+
+    border-right: 1px solid #d9e5eb;
 
     padding: 20px;
 
@@ -112,7 +114,6 @@ header h1 {
 
     z-index: 1000;
 
-    /* 最初は画面の外 */
     transform: translateX(-100%);
 
     transition: transform 0.3s ease;
@@ -505,4 +506,140 @@ a {
 
 #mainContainer.sidebar-open main {
     transform: translateX(0);
+}
+
+/* ================================= */
+/* dialog方式 */
+/* ================================= */
+.event-dialog {
+    border: 0;
+
+    border-radius: 16px;
+
+    width: min(520px, calc(100% - 28px));
+
+    padding: 0;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+    margin: auto;
+}
+
+.event-dialog::backdrop {
+    background: rgba(32, 33, 36, 0.38);
+}
+
+.event-dialog form {
+    padding: 24px;
+}
+
+.dialog-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.field input,
+.field select {
+    padding: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 7px;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.dialog-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-spacer {
+    flex: 1;
+}
+
+/* ================================ */
+/* sidebar.cssの内容 */
+/* ================================ */
+
+.sidebar-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-user{
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d9e5eb;
+}
+
+.sidebar-user h3{
+    font-size: 20px;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.sidebar-user p{
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.sidebar-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #dfeef5;
+    color: #34495e;
+    font-size: 15px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.menu-item:hover{
+    background: #c9e2ec;
+    transform: translateX(4px);
+}
+
+.menu-title {
+
+    color: #0066cc;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-top: 15px;
+
+    margin-bottom: 10px;
+
+}
+
+.menu-title:hover {
+
+    color: #003399;
+
 }

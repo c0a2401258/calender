@@ -57,14 +57,24 @@
 
 .menu-title {
 
+    color: #0066cc;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
     font-size: 18px;
 
     font-weight: bold;
 
-    color: #34495e;
-
     margin-top: 15px;
 
     margin-bottom: 10px;
+
+}
+
+.menu-title:hover {
+
+    color: #003399;
 
 }
