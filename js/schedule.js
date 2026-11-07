@@ -21,64 +21,21 @@ const descriptionInput = document.getElementById("eventDescription");
 const colorInput = document.getElementById("eventColor");
 const formError = document.getElementById("formError");
 const deleteBtn = document.getElementById("deleteBtn");
-//URLからクリックされた日付を取得
-const params = new URLSearchParams(window.location.search);
-const dateParam = params.get("date");
+
 
 // 選択中の日付
 let selectedDate = new Date();
 
-// URLに日付がある場合はその日付に変更
-if (dateParam) {
+const params = new URLSearchParams(window.location.search);
+const dateParam = params.get("date");
+
+if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
     const [year, month, day] = dateParam.split("-").map(Number);
-    Selection = new Date(year, month - 1, day)
+    selectedDate = new Date(year, month - 1, day);
 }
 
 let editingId = null;
-
-// サンプル予定
-// 現段階ではデータベースには保存されません
-let events = [
-    {
-        id: 1,
-        title: "プログラミング演習",
-        date: "2026-10-22",
-        start: "09:00",
-        end: "10:30",
-        description: "大学",
-        color: "green"
-    },
-    {
-        id: 2,
-        title: "コンビニ勤務",
-        date: "2026-10-22",
-        start: "13:00",
-        end: "15:00",
-        description: "アルバイト",
-        color: "blue"
-    },
-    {
-        id: 3,
-        title: "友達とご飯",
-        date: "2026-10-22",
-        start: "20:00",
-        end: "21:00",
-        description: "駅前レストラン",
-        color: "orange"
-    },
-    {
-        id: 4,
-        title: "課題提出",
-        date: "2026-10-22",
-        start: "00:00",
-        end: "23:59",
-        description: "",
-        color: "purple",
-        allDay: true
-    }
-];
-
-let nextId = 5;
+let events = [];
 
 
 // 日付を YYYY-MM-DD 形式にする
@@ -93,9 +50,12 @@ function toDateKey(date) {
 
 // 日本語の日付を作成
 function formatJapaneseDate(date) {
-    const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = ["日", "月", "火", "水", "木", "金", "土"];
 
-    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日（${weekdays[date.getDay()]}）`;
+    return `${year}年${month}月${day}日（${weekday[date.getDay()]}）`;
 }
 
 
@@ -162,6 +122,7 @@ function renderSchedule() {
     }
 
     const rows = [...timeGrid.querySelectorAll(".hour-row")];
+    console.log("時間行の数:", rows.length);
     const rowHeight = rows[0]?.getBoundingClientRect().height || 64;
 
     // 時刻指定の予定を表示
@@ -259,8 +220,80 @@ function openEditDialog(id) {
 }
 
 
-// 予定を保存
-eventForm.addEventListener("submit",async event => {
+// PHPに予定データを送信する
+async function sendScheduleData(data) {
+    const userId = localStorage.getItem("user_id");
+
+    if (!userId) {
+        formError.textContent = "ログイン情報がありません。再ログインしてください。";
+        return null;
+    }
+
+    try {
+        const response = await fetch("/calender/php/schedule.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ...data,
+                user_id: userId
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("PHPとの通信に失敗しました");
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error(error);
+        formError.textContent = "サーバーとの通信に失敗しました。";
+        return null;
+    }
+}
+
+
+
+
+async function loadSchedules() {
+    // まず時間行を表示する
+    events = [];
+    renderSchedule();
+
+    // データベースから予定を読み込む
+    const result = await sendScheduleData({
+        action: "select"
+    });
+
+    if (!Array.isArray(result)) {
+        if (formError) {
+            formError.textContent =
+                result?.message || "予定を読み込めませんでした。";
+        }
+        return;
+    }
+
+    events = result.map(item => ({
+        id: Number(item.id),
+        title: item.title,
+        date: String(item.start_time).slice(0, 10),
+        start: String(item.start_time).slice(11, 16),
+        end: String(item.end_time).slice(11, 16),
+        description: item.description || "",
+        color: item.category || "blue",
+        allDay: false
+    }));
+
+    // 予定を再表示する
+    renderSchedule();
+}
+
+
+
+// 予定を保存・変更
+eventForm.addEventListener("submit", async event => {
     event.preventDefault();
 
     const title = titleInput.value.trim();
@@ -274,46 +307,56 @@ eventForm.addEventListener("submit",async event => {
     }
 
     if (end <= start) {
-        formError.textContent = "終了時刻は開始時刻より後にしてください。";
+        formError.textContent =
+            "終了時刻は開始時刻より後にしてください。";
         return;
     }
 
-    const newEvent = {
-        id: editingId ?? nextId++,
+    const data = {
+        action: editingId === null ? "insert" : "update",
         title: title,
-        date: date,
-        start: start,
-        end: end,
         description: descriptionInput.value.trim(),
-        color: colorInput.value,
-        allDay: false
+        start_time: `${date} ${start}:00`,
+        end_time: `${date} ${end}:00`,
+        category: colorInput.value
     };
 
-    if (editingId === null) {
-        // 新規追加
-        events.push(newEvent);
-    } else {
-        // 編集した予定に置き換える
-        events = events.map(item =>
-            item.id === editingId ? newEvent : item
-        );
+    if (editingId !== null) {
+        data.schedule_id = editingId;
+    }
+
+    const result = await sendScheduleData(data);
+
+    if (!result || result.status !== "success") {
+        formError.textContent =
+            result?.message || "予定を変更できませんでした。";
+        return;
     }
 
     selectedDate = new Date(`${date}T12:00:00`);
 
     eventDialog.close();
-    renderSchedule();
+    await loadSchedules();
 });
 
 
 // 予定を削除
-deleteBtn.addEventListener("click", () => {
+deleteBtn.addEventListener("click", async () => {
     if (editingId === null) return;
 
-    events = events.filter(item => item.id !== editingId);
+    const result = await sendScheduleData({
+        action: "delete",
+        schedule_id: editingId
+    });
+
+    if (!result || result.status !== "success") {
+        formError.textContent =
+            result?.message || "予定を削除できませんでした。";
+        return;
+    }
 
     eventDialog.close();
-    renderSchedule();
+    await loadSchedules();
 });
 
 
@@ -369,4 +412,4 @@ document.getElementById("menuBtn").addEventListener("click", () => {
 
 
 // 初期表示
-renderSchedule();
+loadSchedules();
