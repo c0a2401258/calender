@@ -9,7 +9,7 @@
 include "db.php";
 
 // SESSIONの開始
-sessin_start();
+session_start();
 
 // JSONデータを取得（jsから取得）
 $data = json_decode(file_get_contents('php://input'), true);
