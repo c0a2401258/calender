@@ -52,9 +52,31 @@
             <!-- カレンダー -->
             <section id="calendar-area">
 
+                <!-- 下段 -->
+                <div class="bottom-area">
+
+                    <!-- 今日の予定 -->
+                    <section id="schedule-area">
+
+                        <h2>今日の予定</h2>
+                        <!-- 今日の予定を表示する場所 -->
+                        <div id="todayScheduleList"></div>
+
+                    </section>
+
+                    <!-- 今日の課題 -->
+                    <section id="task-area">
+
+                        <h2>課題</h2>
+
+                    </section>
+
+                </div>
+
                 <h2>カレンダー</h2>
 
                 <div class="calendar-header">
+
 
                     <button id="prevBtn">◀</button>
 
@@ -86,149 +108,115 @@
 
             </section>
 
-            <!-- 下段 -->
-            <div class="bottom-area">
 
-                <!-- 今日の予定 -->
-                <section id="schedule-area">
-
-                    <h2>今日の予定</h2>
-
-                </section>
-
-                <!-- 今日の課題 -->
-                <section id="task-area">
-
-                    <h2>課題</h2>
-
-                </section>
-
-            </div>
 
         </main>
 
     </div>
 
-    <script src="../js/calendar.js"></script>
 
     <div id="popupContainer"></div>
 
     <!-- dialog方式 -->
     <dialog id="lectureDialog" class="event-dialog">
 
-    <form method="dialog">
+        <form method="dialog">
 
-        <div class="dialog-heading">
+            <div class="dialog-heading">
 
-            <h2>講義を追加</h2>
+                <h2>講義を追加</h2>
 
-            <button
-                type="button"
-                id="closeLectureDialogBtn"
-                class="icon-button">
+                <button type="button" id="closeLectureDialogBtn" class="icon-button">
 
-                ×
+                    ×
 
-            </button>
+                </button>
 
-        </div>
-
-        <label class="field">
-
-            講義名
-
-            <input
-                id="lectureName"
-                type="text"
-                placeholder="例：キャリア設計">
-
-        </label>
-
-        <label class="field">
-
-            担当教員
-
-            <input
-                id="lectureTeacher"
-                type="text"
-                placeholder="例：山田太郎">
-
-        </label>
-
-        <div class="field-row">
+            </div>
 
             <label class="field">
 
-                曜日
+                講義名
 
-                <select id="lectureDay">
-
-                    <option>月</option>
-                    <option>火</option>
-                    <option>水</option>
-                    <option>木</option>
-                    <option>金</option>
-
-                </select>
+                <input id="lectureName" type="text" placeholder="例：キャリア設計">
 
             </label>
 
             <label class="field">
 
-                時限
+                担当教員
 
-                <select id="lecturePeriod">
-
-                    <option>1限</option>
-                    <option>2限</option>
-                    <option>3限</option>
-                    <option>4限</option>
-                    <option>5限</option>
-
-                </select>
+                <input id="lectureTeacher" type="text" placeholder="例：山田太郎">
 
             </label>
 
-        </div>
+            <div class="field-row">
 
-        <label class="field">
+                <label class="field">
 
-            教室
+                    曜日
 
-            <input
-                id="lectureRoom"
-                type="text"
-                placeholder="例：K101">
+                    <select id="lectureDay">
 
-        </label>
+                        <option>月</option>
+                        <option>火</option>
+                        <option>水</option>
+                        <option>木</option>
+                        <option>金</option>
 
-        <div class="dialog-actions">
+                    </select>
 
-            <span class="action-spacer"></span>
+                </label>
 
-            <button
-                type="button"
-                id="cancelLectureBtn"
-                class="outline-button">
+                <label class="field">
 
-                キャンセル
+                    時限
 
-            </button>
+                    <select id="lecturePeriod">
 
-            <button
-                type="button"
-                id="saveLectureBtn"
-                class="primary-button">
+                        <option>1限</option>
+                        <option>2限</option>
+                        <option>3限</option>
+                        <option>4限</option>
+                        <option>5限</option>
 
-                保存
+                    </select>
 
-            </button>
+                </label>
 
-        </div>
+            </div>
 
-    </form>
+            <label class="field">
 
-</dialog>
+                教室
+
+                <input id="lectureRoom" type="text" placeholder="例：K101">
+
+            </label>
+
+            <div class="dialog-actions">
+
+                <span class="action-spacer"></span>
+
+                <button type="button" id="cancelLectureBtn" class="outline-button">
+
+                    キャンセル
+
+                </button>
+
+                <button type="button" id="saveLectureBtn" class="primary-button">
+
+                    保存
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+    <script src="../js/calendar.js"></script>
 
 </body>
 
