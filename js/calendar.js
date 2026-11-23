@@ -242,21 +242,6 @@ async function loadSidebar() {
 
 loadSidebar();
 
-async function loadPopup() {
-
-    const response =
-        await fetch("pages/popup.html");
-
-    const html =
-        await response.text();
-
-    document
-        .getElementById("popupContainer")
-        .innerHTML = html;
-}
-
-loadPopup();
-
 function openLecturePopup() {
 
     const popup =
@@ -273,6 +258,25 @@ function closePopup() {
     popup.classList.add("hidden");
 }
 
+function openLecturePopup() {
+
+    document
+        .getElementById("lectureDialog")
+        .showModal();
+
+}
+
+function closeLectureDialog() {
+
+    document
+        .getElementById("lectureDialog")
+        .close();
+
+}
+
+window.openLecturePopup =
+    openLecturePopup;
+
 // サイドバーが出てくる
 const sidebarBtn = document.getElementById("sidebarBtn");
 const sidebar = document.getElementById("sidebar");
@@ -285,3 +289,17 @@ sidebarBtn.addEventListener("click", () => {
     mainContainer.classList.toggle("sidebar-open");
 
 });
+
+document
+    .getElementById("closeLectureDialogBtn")
+    .addEventListener(
+        "click",
+        closeLectureDialog
+    );
+
+document
+    .getElementById("cancelLectureBtn")
+    .addEventListener(
+        "click",
+        closeLectureDialog
+    );

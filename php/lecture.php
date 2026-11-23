@@ -10,6 +10,9 @@
 // データベース接続
 include "db.php";
 
+// SESSIONの開始
+session_start();
+
 // JSONデータを取得（jsから取得）
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -17,7 +20,7 @@ $action = $data['action'];  // アクションを取得（追加・取得）
 
 if($action == "insert"){
     // 講義の追加
-    $user_id = $data['user_id'];  // ユーザーIDを取得
+    $user_id = $_SESSION['user_id'];  // ユーザーIDを取得
     $subject = $data['subject'];  // 講義を取得
     $day_of_week = $data['day_of_week'];  // 曜日を取得
     $period = $data['period'];  // 時限を取得
@@ -38,7 +41,7 @@ if($action == "insert"){
     echo json_encode($response);
 }else if($action == 'select'){
     // 講義の取得
-    $user_id = $data['user_id'];  // ユーザーIDを取得
+    $user_id = $_SESSION['user_id'];  // ユーザーIDを取得
 
     $sql = "SELECT * FROM lectures WHERE user_id = '$user_id'";
 

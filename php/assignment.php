@@ -12,6 +12,9 @@
 // データベース接続
 include "db.php";
 
+// SESSIONの開始
+session_start();
+
 // JSONデータを取得
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -19,7 +22,7 @@ $action = $data['action'];  // アクションを取得（登録・取得・変�
 
 if($action == 'insert'){
     // 課題の登録
-    $user_id = $data['user_id'];  // ユーザーIDを取得
+    $user_id = $_SESSION['user_id'];  // ユーザーIDを取得
     $lecture_id = $data['lecture_id'];  // 講義IDを取得
     $title = $data['title'];  // 課題名を取得
     $deadline = $data['deadline'];  // 締切を取得
@@ -40,7 +43,7 @@ if($action == 'insert'){
 
 }else if($action == 'select'){
     // 課題の取得
-    $user_id = $data['user_id'];  // ユーザーIDを取得
+    $user_id = $_SESSION['user_id'];  // ユーザーIDを取得
 
     $sql = "SELECT * FROM assignments WHERE user_id = '$user_id'";
 
@@ -60,7 +63,7 @@ if($action == 'insert'){
     $title = $data['title'];  // 課題名を取得
     $deadline = $data['deadline'];  // 締切を取得
     $status = $data['status'];
-    $user_id = $data['user_id'];  // ユーザーIDを取得
+    $user_id = $_SESSION['user_id'];  // ユーザーIDを取得
 
     $sql = "UPDATE assignments SET title = '$title', deadline = '$deadline', status = '$status' WHERE id = '$assignment_id' AND user_id = '$user_id'";
 
