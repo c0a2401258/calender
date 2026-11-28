@@ -114,8 +114,8 @@
     <div id="popupContainer"></div>
 
     <!-- dialog方式 -->
+    <!-- 講義管理 -->
     <dialog id="lectureDialog" class="event-dialog">
-
     <form method="dialog">
 
         <div class="dialog-heading">
@@ -133,7 +133,7 @@
 
         </div>
 
-        <label class="field">
+        <div class="field">
 
             講義名
 
@@ -142,9 +142,9 @@
                 type="text"
                 placeholder="例：キャリア設計">
 
-        </label>
+        </div>
 
-        <label class="field">
+        <div class="field">
 
             担当教員
 
@@ -153,45 +153,47 @@
                 type="text"
                 placeholder="例：山田太郎">
 
-        </label>
+        </div>
 
         <div class="field-row">
 
-            <label class="field">
+            <div class="field">
 
                 曜日
 
                 <select id="lectureDay">
 
-                    <option>月</option>
-                    <option>火</option>
-                    <option>水</option>
-                    <option>木</option>
-                    <option>金</option>
+                    <option value="1">月</option>
+                    <option value="2">火</option>
+                    <option value="3">水</option>
+                    <option value="4">木</option>
+                    <option value="5">金</option>
+                    <option value="6">土</option>
+                    <option value="7">日</option>
 
                 </select>
 
-            </label>
+            </div>
 
-            <label class="field">
+            <div class="field">
 
                 時限
 
                 <select id="lecturePeriod">
 
-                    <option>1限</option>
-                    <option>2限</option>
-                    <option>3限</option>
-                    <option>4限</option>
-                    <option>5限</option>
+                    <option value="1">1限</option>
+                    <option value="2">2限</option>
+                    <option value="3">3限</option>
+                    <option value="4">4限</option>
+                    <option value="5">5限</option>
 
                 </select>
 
-            </label>
+            </div>
 
         </div>
 
-        <label class="field">
+        <div class="field">
 
             教室
 
@@ -200,7 +202,7 @@
                 type="text"
                 placeholder="例：K101">
 
-        </label>
+        </div>
 
         <div class="dialog-actions">
 
@@ -227,6 +229,516 @@
         </div>
 
     </form>
+
+</dialog>
+
+    <!-- 課題管理 -->
+    <dialog id="assignmentDialog" class="event-dialog">
+
+    <form method="dialog">
+
+        <div class="dialog-heading">
+
+            <h2>課題を追加</h2>
+
+            <button
+                type="button"
+                id="closeAssignmentDialogBtn"
+                class="icon-button">
+
+                ×
+
+            </button>
+
+        </div>
+
+        <div class="field">
+
+            課題名
+
+            <input
+                id="assignmentTitle"
+                type="text"
+                placeholder="例：レポート提出">
+
+        </div>
+
+        <div class="field">
+
+            締切日時
+
+            <input
+                id="assignmentDeadline"
+                type="datetime-local">
+
+        </div>
+
+        <div class="field">
+
+            詳細
+
+            <textarea
+                id="assignmentDescription"
+                rows="3"></textarea>
+
+        </div>
+
+        <div class="dialog-actions">
+
+            <span class="action-spacer"></span>
+
+            <button
+                type="button"
+                id="cancelAssignmentBtn"
+                class="outline-button">
+
+                キャンセル
+
+            </button>
+
+            <button
+                type="button"
+                id="saveAssignmentBtn"
+                class="primary-button">
+
+                保存
+
+            </button>
+
+        </div>
+
+    </form>
+
+</dialog>
+
+    <!-- 通知 -->
+    <dialog id="notificationDialog" class="event-dialog">
+
+    <form method="dialog">
+
+    <div class="dialog-heading">
+
+        <h2>通知設定</h2>
+
+        <button
+            type="button"
+            id="closeNotificationDialogBtn"
+            class="icon-button">
+
+            ×
+
+        </button>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>通知を有効にする</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="notificationEnabled"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>講義開始前通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="lectureNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>課題締切前日通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="assignmentBeforeNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>課題締切当日通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="assignmentTodayNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <hr>
+
+    <div class="setting-row">
+
+        <span>スヌーズを有効にする</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="snoozeEnabled"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="field">
+
+        <span>スヌーズ時間</span>
+
+        <select id="snoozeTime">
+
+            <option>5分</option>
+            <option>10分</option>
+            <option selected>15分</option>
+            <option>30分</option>
+
+        </select>
+
+    </div>
+
+    <div class="field">
+
+        <span>通知タイミング</span>
+
+        <select id="notificationTiming">
+
+            <option>5分前</option>
+            <option>10分前</option>
+            <option selected>15分前</option>
+            <option>30分前</option>
+            <option>1時間前</option>
+
+        </select>
+
+    </div>
+
+    <div class="field">
+
+        <span>通知音</span>
+
+        <select id="notificationSound">
+
+            <option selected>
+                デフォルト
+            </option>
+
+            <option>
+                ベル
+            </option>
+
+            <option>
+                アラーム
+            </option>
+
+            <option>
+                静音
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="dialog-actions">
+
+        <span class="action-spacer"></span>
+
+        <button
+            type="button"
+            id="cancelNotificationBtn"
+            class="outline-button">
+
+            閉じる
+
+        </button>
+
+        <button
+            type="button"
+            id="saveNotificationBtn"
+            class="primary-button">
+
+            保存
+
+        </button>
+
+    </div>
+
+</form>
+
+</dialog>
+
+    <!-- 設定 -->
+    <dialog id="settingDialog" class="event-dialog">
+    <form method="dialog">
+
+    <div class="dialog-heading">
+
+        <h2>設定</h2>
+
+        <button
+            type="button"
+            id="closeSettingDialogBtn"
+            class="icon-button">
+
+            ×
+
+        </button>
+
+    </div>
+
+    <h3>カレンダー設定</h3>
+
+    <div class="field">
+
+        <span>週の開始曜日</span>
+
+        <select id="weekStart">
+
+            <option value="mon">
+                月曜日
+            </option>
+
+            <option value="sun">
+                日曜日
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="field">
+
+        カレンダー表示形式
+
+        <select id="calendarView">
+
+            <option>
+                月表示
+            </option>
+
+            <option>
+                7日表示
+            </option>
+
+            <option>
+                5日表示
+            </option>
+
+            <option>
+                3日表示
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>祝日を表示する</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="showHoliday"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>今日を強調表示する</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="highlightToday"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <hr>
+
+    <h3>通知設定</h3>
+
+    <div class="setting-row">
+
+        <span>通知を有効にする</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="notificationEnabled"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>講義開始前通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="lectureNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>課題締切前日通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="assignmentNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>課題締切当日通知</span>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="sameDayNotification"
+                checked>
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+    <div class="field">
+
+        通知タイミング
+
+        <select id="notificationTiming">
+
+            <option>
+                10分前
+            </option>
+
+            <option>
+                15分前
+            </option>
+
+            <option selected>
+                30分前
+            </option>
+
+            <option>
+                1時間前
+            </option>
+
+        </select>
+
+    </div>
+
+    <hr>
+
+    <h3>アカウント設定</h3>
+
+    <div class="field">
+
+        ユーザー名
+
+        <input
+            type="text"
+            value="ユーザー名">
+
+    </div>
+
+    <div class="dialog-actions">
+
+        <span class="action-spacer"></span>
+
+        <button
+            type="button"
+            id="cancelSettingBtn"
+            class="outline-button">
+
+            閉じる
+
+        </button>
+
+        <button
+            type="button"
+            id="saveSettingBtn"
+            class="primary-button">
+
+            保存
+
+        </button>
+
+    </div>
+
+</form>
 
 </dialog>
 
