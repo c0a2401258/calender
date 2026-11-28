@@ -283,26 +283,14 @@ async function loadSidebar() {
         await response.text();
 
     document.getElementById("sidebar").innerHTML = html;
+
+    loadLectures();
+
 }
 
 loadSidebar();
 
-function openLecturePopup() {
-
-    const popup =
-        document.getElementById("popup");
-
-    popup.classList.remove("hidden");
-}
-
-function closePopup() {
-
-    const popup =
-        document.getElementById("popup");
-
-    popup.classList.add("hidden");
-}
-
+// 講義管理のポップアップを開く
 function openLecturePopup() {
 
     document
@@ -319,8 +307,190 @@ function closeLectureDialog() {
 
 }
 
+// 課題管理のポップアップを開く
+function openAssignmentPopup() {
+
+    document
+        .getElementById("assignmentDialog")
+        .showModal();
+
+}
+
+function closeAssignmentDialog() {
+
+    document
+        .getElementById("assignmentDialog")
+        .close();
+
+}
+
+// 通知のポップアップを開く
+function openNotificationPopup() {
+
+    document
+        .getElementById("notificationDialog")
+        .showModal();
+
+}
+
+function closeNotificationDialog() {
+
+    document
+        .getElementById("notificationDialog")
+        .close();
+
+}
+
+// 設定のポップアップを開く
+function openSettingPopup() {
+
+    document
+        .getElementById("settingDialog")
+        .showModal();
+
+}
+
+function closeSettingDialog() {
+
+    document
+        .getElementById("settingDialog")
+        .close();
+
+}
+
+
+
 window.openLecturePopup =
     openLecturePopup;
+
+window.openAssignmentPopup =
+    openAssignmentPopup;
+
+// 講義管理保存
+async function saveLecture() {
+
+    console.log("保存ボタンが押されました");
+
+    const data = {
+
+        action: "insert",
+
+        user_id: 1,
+
+        subject:
+            document
+            .getElementById("lectureName")
+            .value,
+
+        day_of_week:
+            document
+            .getElementById("lectureDay")
+            .value,
+
+        period:
+            document
+            .getElementById("lecturePeriod")
+            .value,
+
+        room:
+            document
+            .getElementById("lectureRoom")
+            .value,
+
+        teacher:
+            document
+            .getElementById("lectureTeacher")
+            .value
+
+    };
+
+    console.log(data);
+
+    const result =
+        await post(
+            "php/lecture.php",
+            data
+        );
+
+    console.log(result);
+
+    alert(result.message);
+
+    if(result.status === "success") {
+
+        closeLectureDialog();
+
+        loadLectures();
+    }
+}
+
+// 講義取得関数
+async function loadLectures() {
+
+    console.log("loadLectures開始");
+
+    const data = {
+
+        action: "select",
+
+        user_id: 1
+
+    };
+
+    const lectures =
+        await post(
+            "php/lecture.php",
+            data
+        );
+
+    console.log("取得結果");
+    console.log(lectures);
+
+    const lectureList =
+        document.getElementById(
+            "lectureList"
+        );
+
+    lectureList.innerHTML = "";
+
+    const dayText = {
+
+        "1": "月",
+        "2": "火",
+        "3": "水",
+        "4": "木",
+        "5": "金",
+        "6": "土",
+        "7": "日"
+
+    };
+
+    lectures.forEach(lecture => {
+
+        console.log(lecture);
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "lecture-item";
+
+        item.textContent =
+            `${lecture.subject}
+            (${dayText[lecture.day_of_week]}曜 ${lecture.period}限)`;
+
+        lectureList.appendChild(item);
+
+    });
+
+}
+
+
+window.openNotificationPopup =
+    openNotificationPopup;
+
+window.openSettingPopup =
+    openSettingPopup;
 
 // サイドバーが出てくる
 const sidebarBtn = document.getElementById("sidebarBtn");
@@ -335,6 +505,99 @@ sidebarBtn.addEventListener("click", () => {
 
 });
 
+// 講義管理モーダル
+const lectureDialog =
+    document.getElementById("lectureDialog");
+
+lectureDialog.addEventListener("click", (event) => {
+
+    const rect =
+        lectureDialog.getBoundingClientRect();
+
+    const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.bottom &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.right;
+
+    if (!isInDialog) {
+
+        lectureDialog.close();
+
+    }
+
+});
+
+// 課題管理モーダル
+const assignmentDialog =
+    document.getElementById("assignmentDialog");
+
+assignmentDialog.addEventListener("click", (event) => {
+
+    const rect =
+        assignmentDialog.getBoundingClientRect();
+
+    const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.bottom &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.right;
+
+    if (!isInDialog) {
+
+        assignmentDialog.close();
+
+    }
+
+});
+
+// 通知モーダル
+const notificationDialog =
+    document.getElementById("notificationDialog");
+
+notificationDialog.addEventListener("click", (event) => {
+
+    const rect =
+        notificationDialog.getBoundingClientRect();
+
+    const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.bottom &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.right;
+
+    if (!isInDialog) {
+
+        notificationDialog.close();
+
+    }
+
+});
+
+// 設定モーダル
+const settingDialog =
+    document.getElementById("settingDialog");
+
+settingDialog.addEventListener("click", (event) => {
+
+    const rect =
+        settingDialog.getBoundingClientRect();
+
+    const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.bottom &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.right;
+
+    if (!isInDialog) {
+
+        settingDialog.close();
+
+    }
+
+});
+
+// 講義管理のポップアップを閉じる
 document
     .getElementById("closeLectureDialogBtn")
     .addEventListener(
@@ -349,6 +612,7 @@ document
         closeLectureDialog
     );
 
+<<<<<<< HEAD
 // =================================
 // 今日の予定を取得する
 // =================================
@@ -561,3 +825,93 @@ function displayTodaySchedules(schedules) {
 //     "DOMContentLoaded",
 //     loadTodaySchedules
 // );    
+=======
+// 課題管理のポップアップを閉じる
+document
+    .getElementById("closeAssignmentDialogBtn")
+    ?.addEventListener(
+        "click",
+        closeAssignmentDialog
+    );
+
+document
+    .getElementById("cancelAssignmentBtn")
+    ?.addEventListener(
+        "click",
+        closeAssignmentDialog
+    );
+
+// 通知のポップアップを閉じる
+document
+    .getElementById("closeNotificationDialogBtn")
+    ?.addEventListener(
+        "click",
+        closeNotificationDialog
+    );
+
+document
+    .getElementById("cancelNotificationBtn")
+    ?.addEventListener(
+        "click",
+        closeNotificationDialog
+    );
+
+// 設定のポップアップを閉じる
+document
+    .getElementById("closeSettingDialogBtn")
+    ?.addEventListener(
+        "click",
+        closeSettingDialog
+    );
+
+document
+    .getElementById("cancelSettingBtn")
+    ?.addEventListener(
+        "click",
+        closeSettingDialog
+    );
+
+document
+    .getElementById("saveLectureBtn")
+    .addEventListener(
+        "click",
+        saveLecture
+    );
+
+
+// モーダルの外側をクリックしたら閉じる
+function enableOutsideClose(dialogId) {
+
+    const dialog =
+        document.getElementById(dialogId);
+
+    dialog.addEventListener("click", (event) => {
+
+        const rect =
+            dialog.getBoundingClientRect();
+
+        const isInDialog =
+            rect.top <= event.clientY &&
+            event.clientY <= rect.bottom &&
+            rect.left <= event.clientX &&
+            event.clientX <= rect.right;
+
+        if (!isInDialog) {
+
+            dialog.close();
+
+        }
+
+    });
+
+}
+
+enableOutsideClose("lectureDialog");
+
+enableOutsideClose("assignmentDialog");
+
+enableOutsideClose("notificationDialog");
+
+enableOutsideClose("settingDialog");
+
+>>>>>>> main
