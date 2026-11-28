@@ -612,7 +612,6 @@ document
         closeLectureDialog
     );
 
-<<<<<<< HEAD
 // =================================
 // 今日の予定を取得する
 // =================================
@@ -825,7 +824,6 @@ function displayTodaySchedules(schedules) {
 //     "DOMContentLoaded",
 //     loadTodaySchedules
 // );    
-=======
 // 課題管理のポップアップを閉じる
 document
     .getElementById("closeAssignmentDialogBtn")
@@ -914,4 +912,3 @@ enableOutsideClose("notificationDialog");
 
 enableOutsideClose("settingDialog");
 
->>>>>>> main
