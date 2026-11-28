@@ -9,11 +9,32 @@
 // 担当：C
 // ================================= 
 
-// データベース接続
-include "db.php";
-
 // SESSIONの開始
 session_start();
+
+// JSON形式で返す
+header('Content-Type: application/json; charset=UTF-8');
+
+// ログインセッションを確認
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+
+    echo json_encode(
+        array(
+            "status" => "login_required",
+            "message" => "ログインしてください"
+        ),
+        JSON_UNESCAPED_UNICODE
+    );
+
+    exit;
+}
+
+// セッションからユーザーIDを取得
+$user_id = (int)$_SESSION['user_id'];
+
+// データベース接続
+include "db.php";
 
 // JSONデータを取得（jsから取得）
 $data = json_decode(file_get_contents('php://input'), true);
@@ -22,7 +43,6 @@ $action = $data['action'];  //アクションを取得（追加、取得、変�
 
 if($action == "insert"){
     // 予定の追加
-    $user_id = $_SESSION['user_id'];  //ユーザーIDを取得
     $title = $data['title'];  //予定のタイトルを取得
     $description = $data['description'];  //予定の詳細を取得
     $start_time = $data['start_time'];  //予定の開始時間を取得
@@ -45,7 +65,6 @@ if($action == "insert"){
 
 }else if($action == "select"){
     // 予定の取得
-    $user_id = $_SESSION['user_id'];  //ユーザーIDを取得
 
     $sql = "SELECT * FROM schedule WHERE user_id = '$user_id'";
 
@@ -68,7 +87,6 @@ if($action == "insert"){
     $start_time = $data['start_time'];  //予定の開始時間を取得
     $end_time = $data['end_time'];  //予定の終了時間を取得
     $category = $data['category'];  //予定のカテゴリを取得
-    $user_id = $_SESSION['user_id'];  //ユーザーIDを取得
 
     $sql = "UPDATE schedule SET title = '$title', description = '$description', start_time = '$start_time', end_time = '$end_time', category = '$category' WHERE id = '$schedule_id' AND user_id = '$user_id'";
 
@@ -86,7 +104,6 @@ if($action == "insert"){
 }else if($action == "delete"){
     // 予定の削除
     $schedule_id = $data['schedule_id'];  //予定IDを取得
-    $user_id = $_SESSION['user_id'];  //ユーザーIDを取得
 
     $sql = "DELETE FROM schedule WHERE id = '$schedule_id' AND user_id = '$user_id'";
 

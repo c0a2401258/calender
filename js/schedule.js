@@ -222,34 +222,66 @@ function openEditDialog(id) {
 
 // PHPに予定データを送信する
 async function sendScheduleData(data) {
-    const userId = localStorage.getItem("user_id");
-
-    if (!userId) {
-        formError.textContent = "ログイン情報がありません。再ログインしてください。";
-        return null;
-    }
-
     try {
-        const response = await fetch("/calender/php/schedule.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ...data,
-                user_id: userId
-            })
-        });
+        const response = await fetch(
+            "/calender/php/schedule.php",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-        if (!response.ok) {
-            throw new Error("PHPとの通信に失敗しました");
+                // user_idは送信しない
+                // schedule.phpがセッションから取得する
+                body: JSON.stringify(data)
+            }
+        );
+
+        const responseText = await response.text();
+
+        let result;
+
+        try {
+            result = JSON.parse(responseText);
+        } catch (error) {
+            console.error(
+                "schedule.phpから返された内容:",
+                responseText
+            );
+
+            formError.textContent =
+                "PHPから正しいJSONが返されませんでした。";
+
+            return null;
         }
 
-        return await response.json();
+        // PHPセッションにuser_idがない場合
+        if (
+            response.status === 401 ||
+            result.status === "login_required"
+        ) {
+            formError.textContent =
+                result.message || "ログインしてください。";
+
+            return null;
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                result.message ||
+                `HTTPエラー: ${response.status}`
+            );
+        }
+
+        return result;
 
     } catch (error) {
         console.error(error);
-        formError.textContent = "サーバーとの通信に失敗しました。";
+
+        formError.textContent =
+            error.message ||
+            "サーバーとの通信に失敗しました。";
+
         return null;
     }
 }
@@ -401,7 +433,7 @@ document.getElementById("todayBtn").addEventListener("click", () => {
 
 // カレンダー画面に戻る
 document.getElementById("backBtn").addEventListener("click", () => {
-    window.location.href = "calendar.html";
+    window.history.back();
 });
 
 

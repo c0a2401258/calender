@@ -369,6 +369,39 @@ main {
     font-weight: bold;
 }
 
+/* ================================= */
+/* カレンダー内の予定 */
+/* ================================= */
+
+.calendar-event {
+    margin-top: 4px;
+    padding: 2px 6px;
+
+    border-radius: 4px;
+    border-left: 4px solid;
+
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 仕事 */
+.work-event {
+    background: #d3e3fd;
+    border-color: #1a73e8;
+    color: #174ea6;
+}
+
+/* プライベート */
+.private-event {
+    background: #ceead6;
+    border-color: #188038;
+    color: #0d652d;
+}
 
 /* ================================= */
 /* 今日の予定・課題 */
@@ -644,6 +677,46 @@ a {
 
 }
 
+<<<<<<< HEAD
+/* =================================
+   今日の予定
+================================= */
+
+#todayScheduleList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.today-schedule-item {
+    padding: 12px;
+    border-left: 5px solid #4285f4;
+    border-radius: 6px;
+    background-color: #f5f7fa;
+}
+
+.today-schedule-time {
+    margin-bottom: 4px;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.today-schedule-title {
+    color: #222;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.today-schedule-description {
+    margin-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.no-schedule {
+    color: #777;
+=======
 /* ================================= */
 /* トグルスイッチ */
 /* ================================= */
@@ -765,4 +838,5 @@ a {
 
     line-height: 1.5;
 
+>>>>>>> main
 }
